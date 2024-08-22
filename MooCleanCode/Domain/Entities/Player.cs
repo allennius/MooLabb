@@ -2,22 +2,22 @@ using MooCleanCode.Domain.Interfaces;
 
 namespace MooCleanCode.Domain.Entities;
 
-public class Player(string name, int totalGuess) : IPlayer
+public class Player(string name, int totalGuesses) : IPlayer
 {
     public string Name { get; } = name;
     public int GamesPlayed { get; private set; } = 1;
-    private int totalGuess = totalGuess;
+    private int totalGuesses = totalGuesses;
 
 
-    public void Update(int guesses)
+    public void UpdatePlayerStats(int guesses)
     {
-        totalGuess += guesses;
+        totalGuesses += guesses;
         GamesPlayed++;
     }
 
-    public double Average()
+    public double GetAverageGuessesPerGame()
     {
-        return (double)totalGuess / GamesPlayed;
+        return (double)totalGuesses / GamesPlayed;
     }
 
 

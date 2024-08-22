@@ -12,14 +12,12 @@ namespace MooCleanCode;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection GameServices(this IServiceCollection services)
+    public static void AddGameServices(this IServiceCollection services)
     {
         services.AddSingleton<IUI, ConsoleUI>();
         services.AddSingleton<IGameRepository, GameRepository>();
         services.AddSingleton<Game>();
         services.AddSingleton<GameService>();
         services.AddSingleton<IGameManager, GameManager>();
-
-        return services;
     }
 }

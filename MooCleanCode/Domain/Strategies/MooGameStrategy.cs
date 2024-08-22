@@ -10,15 +10,15 @@ public class MooGameStrategy : IGameStrategy
     {
         Random randomGenerator = new();
         HashSet<int> uniqueDigits = new();
-        StringBuilder goal = new();
+        StringBuilder uniqueGoal = new();
 
         while (uniqueDigits.Count < 4)
         {
             int randomDigit = randomGenerator.Next(10);
             if (uniqueDigits.Add(randomDigit))
-                goal.Append(randomDigit);
+                uniqueGoal.Append(randomDigit);
         }
 
-        return goal.ToString();
+        return uniqueGoal.ToString();
     }
 }

@@ -7,18 +7,13 @@ public class MockGameRepository : IGameRepository
 
     public string toplistFilename = "";
     
-    private List<(string name, int score)> toplist;
-
-    public MockGameRepository()
+    private List<(string name, int score)> toplist = new List<(string name, int score)>
     {
-        toplist = new ()
-        {
-            ("Obi", 10),
-            ("Anakin", 5),
-            ("Yoda", 1)
-        };
-    }
-    
+        ("Obi", 10),
+        ("Anakin", 5),
+        ("Yoda", 1)
+    };
+
     public IEnumerable<(string name, int score)> GetToplistData()
     {
         return toplist;

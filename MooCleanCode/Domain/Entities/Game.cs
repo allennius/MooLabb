@@ -11,7 +11,7 @@ public class Game
     public const int StartingGuesses = 0;
     public static readonly string EmptyGuess = new string(' ', 4);
 
-    public string Goal { get; internal set; } = EmptyGuess;
+    public string Goal { get; private set; } = EmptyGuess;
     public int NumberOfGuesses { get; private set; }
 
     private IGameStrategy gameStrategy;
@@ -24,7 +24,7 @@ public class Game
     public void SetGoal()
     {   
         string goal = gameStrategy.MakeGoal();
-        if (int.TryParse(goal, out int isInt) && goal.Count() == 4)
+        if (int.TryParse(goal, out int _) && goal.Length == 4)
             Goal = goal;
     }
     public void SetNumberOfGuesses(int numberOfGuesses = 0)
@@ -39,17 +39,17 @@ public class Game
         return gameStrategy;
     }
 
-    public static string CheckGuess(string goal, string guess)
+    public static string EvaluateGuessForBullsAndCows(string goal, string userGuess)
     {
         int cows = 0, bulls = 0;
 
         Dictionary<char, int> goalCount = new();
         Dictionary<char, int> guessCount = new();
-        guess += EmptyGuess; // if player entered less than 4 chars
+        userGuess += EmptyGuess; // if player entered less than 4 chars
 
         for (int i = 0; i < 4; i++)
         {
-            if (goal[i] == guess[i])
+            if (goal[i] == userGuess[i])
             {
                 bulls++;
                 continue;
@@ -60,10 +60,10 @@ public class Game
             else
                 goalCount[goal[i]] = 1;
 
-            if (guessCount.ContainsKey(guess[i]))
-                guessCount[guess[i]]++;
+            if (guessCount.ContainsKey(userGuess[i]))
+                guessCount[userGuess[i]]++;
             else
-                guessCount[guess[i]] = 1;
+                guessCount[userGuess[i]] = 1;
         }
 
         foreach (var entry in guessCount)

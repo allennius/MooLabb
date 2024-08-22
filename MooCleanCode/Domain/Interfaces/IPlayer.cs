@@ -5,8 +5,8 @@ public interface IPlayer
     public string Name { get; }
     public int GamesPlayed { get; }
     
-    void Update(int guesses);
-    double Average();
+    void UpdatePlayerStats(int guesses);
+    double GetAverageGuessesPerGame();
     bool Equals(object p);
     int GetHashCode();
 }

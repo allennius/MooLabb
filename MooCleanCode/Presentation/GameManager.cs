@@ -28,11 +28,11 @@ public class GameManager(GameService gameService, IUI ui) : IGameManager
 
     private void PlayGame(string name)
     {
-        string guess = Game.EmptyGuess;
-        while (gameService.HandleGuess(guess) != Game.CorrectBulls)
+        string userGuess = Game.EmptyGuess;
+        while (gameService.HandleGuess(userGuess) != Game.CorrectBulls)
         {
-            guess = ui.GetString();
-            ui.PutString(gameService.HandleGuess(guess));
+            userGuess = ui.GetString();
+            ui.PutString(gameService.HandleGuess(userGuess));
         }
         
         gameService.AddGameToToplist(name);

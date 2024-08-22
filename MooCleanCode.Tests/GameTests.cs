@@ -18,10 +18,9 @@ public class GameTests
     }
     
     [TestMethod]
-    public void MooGameTest()
+    public void GameIsInitiatedTest()
     {
         Assert.IsNotNull(game);
-        Assert.IsTrue(game.Goal == Game.EmptyGuess);
         Assert.IsTrue(game.NumberOfGuesses == 0);
     }
 
@@ -35,8 +34,8 @@ public class GameTests
         string guess = "1212";
         
         string excpectedResult = "BB,CC";
-        string uniqueResult = Game.CheckGuess(uniqueGoal, uniqueGuess);
-        string result = Game.CheckGuess(goal, guess);
+        string uniqueResult = Game.EvaluateGuessForBullsAndCows(uniqueGoal, uniqueGuess);
+        string result = Game.EvaluateGuessForBullsAndCows(goal, guess);
         
         Assert.AreEqual(excpectedResult, uniqueResult);
         Assert.AreEqual(excpectedResult, result);
@@ -51,8 +50,8 @@ public class GameTests
         string guess = "1111";
 
         string excpectedResult = "BBBB,";
-        string uniqueResult = Game.CheckGuess(uniqueGoal, uniqueGuess);
-        string result = Game.CheckGuess(goal, guess);
+        string uniqueResult = Game.EvaluateGuessForBullsAndCows(uniqueGoal, uniqueGuess);
+        string result = Game.EvaluateGuessForBullsAndCows(goal, guess);
         
         Assert.AreEqual(excpectedResult, uniqueResult);
         Assert.AreEqual(excpectedResult, result);

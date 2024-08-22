@@ -21,7 +21,7 @@ public class ConsoleUI : IUI
         PutString("\nPlayer Games Average");
         foreach (var player in toplist)
         {
-            PutString($"{player.Name,9}{player.GamesPlayed,5}{player.Average(),9:F2}");
+            PutString($"{player.Name,9}{player.GamesPlayed,5}{player.GetAverageGuessesPerGame(),9:F2}");
         }
     }
 
@@ -42,22 +42,22 @@ public class ConsoleUI : IUI
         while (true)
         {
             Console.Clear();
-            DisplayGameSelection<T>(meny.ToArray(), selectorIndex, header);
-            var input = Console.ReadKey(true).Key;
+            DisplayMenuSelection<T>(meny.ToArray(), selectorIndex, header);
+            var userInput = Console.ReadKey(true).Key;
             
-            selectorIndex = input switch
+            selectorIndex = userInput switch
             {
                 ConsoleKey.UpArrow   => (selectorIndex - 1 + meny.Count) % meny.Count,
                 ConsoleKey.DownArrow => (selectorIndex + 1 + meny.Count) % meny.Count,
                 _ => selectorIndex
             };
 
-            if (input == ConsoleKey.Enter)
+            if (userInput == ConsoleKey.Enter)
                 return meny[selectorIndex];
         }
     }
 
-    private void DisplayGameSelection<T>(Array meny, int selectorIndex, string header)
+    private void DisplayMenuSelection<T>(Array meny, int selectorIndex, string header)
     {
         PutString(header);
         for (int i = 0; i < meny.Length; i++)

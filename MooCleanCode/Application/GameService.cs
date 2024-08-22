@@ -11,7 +11,7 @@ public class GameService(Game game, IGameRepository repository)
     public string HandleGuess(string guess)
     {
         game.SetNumberOfGuesses(game.NumberOfGuesses + 1);
-        return Game.CheckGuess(game.Goal, guess);
+        return Game.EvaluateGuessForBullsAndCows(game.Goal, guess);
     }
     public string GetGoal()
     {
@@ -36,7 +36,7 @@ public class GameService(Game game, IGameRepository repository)
         var toplistData = repository.GetToplistData();
 
         var toplist = SummarizeToplistDataToPlayerTotals(toplistData);
-        toplist.Sort((p1, p2) => p1.Average().CompareTo(p2.Average()));
+        toplist.Sort((p1, p2) => p1.GetAverageGuessesPerGame().CompareTo(p2.GetAverageGuessesPerGame()));
 
         return toplist;
     }
@@ -61,7 +61,7 @@ public class GameService(Game game, IGameRepository repository)
             if (playerIndex < 0)
                 summarizedToplist.Add(player);
             else
-                summarizedToplist[playerIndex].Update(result.score);
+                summarizedToplist[playerIndex].UpdatePlayerStats(result.score);
         }
 
         return summarizedToplist;

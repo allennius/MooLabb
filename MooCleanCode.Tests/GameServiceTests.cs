@@ -21,7 +21,7 @@ public class MooGameServiceTests
     }
 
     [TestMethod]
-    public void gameServiceIsInitializedTest()
+    public void GameServiceIsInitializedTest()
     {
         Assert.IsNotNull(gameservice);
         Assert.IsTrue(gameservice.GetGoal().Length == 4);
@@ -87,7 +87,7 @@ public class MooGameServiceTests
         for (int i = 1; i < toplist.Count; i++)
         {
             
-            Assert.IsTrue(toplist[i].Average() >= toplist[i - 1].Average());
+            Assert.IsTrue(toplist[i].GetAverageGuessesPerGame() >= toplist[i - 1].GetAverageGuessesPerGame());
         }
         
         Assert.IsTrue(playerNameCount == 1);
