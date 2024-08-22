@@ -1,0 +1,17 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0c5f249b_002Dd1f2_002D443b_002Dafd9_002D9febfb100973/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from UnitTest1.cs" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Or&gt;
+    &lt;ProjectFile&gt;ACDCDF9A-01B1-415A-8263-E85242EDDEB4/f:GameTests.cs&lt;/ProjectFile&gt;
+    &lt;ProjectFile&gt;ACDCDF9A-01B1-415A-8263-E85242EDDEB4/f:GameServiceTests.cs&lt;/ProjectFile&gt;
+  &lt;/Or&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fd9ec4e5_002D909e_002D4537_002D818d_002D9202a5c37d33/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AddGameToToplistIfNumberOfGuessesIsCorrect" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Or&gt;
+    &lt;ProjectFile&gt;ACDCDF9A-01B1-415A-8263-E85242EDDEB4/f:GameServiceTests.cs&lt;/ProjectFile&gt;
+    &lt;TestAncestor&gt;
+      &lt;TestId&gt;MSTest::ACDCDF9A-01B1-415A-8263-E85242EDDEB4::net8.0::MooCleanCode.Tests.GameTests.IncrementNumberOfGuessesWithParameterTest&lt;/TestId&gt;
+      &lt;TestId&gt;MSTest::ACDCDF9A-01B1-415A-8263-E85242EDDEB4::net8.0::MooCleanCode.Tests.GameTests.MooGameMakeGoalAndValidateNumbersUniqueTest&lt;/TestId&gt;
+    &lt;/TestAncestor&gt;
+    &lt;ProjectFile&gt;ACDCDF9A-01B1-415A-8263-E85242EDDEB4/f:GameTests.cs&lt;/ProjectFile&gt;
+  &lt;/Or&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
