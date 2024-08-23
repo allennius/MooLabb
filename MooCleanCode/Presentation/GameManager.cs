@@ -12,7 +12,7 @@ public class GameManager(GameService gameService, IUI ui) : IGameManager
     {
         var gameSelection = ui.MenuSelector(
             Enum.GetValues(typeof(GameType)).Cast<GameType>().ToList(),
-            "Which game would you like to play?");
+            "Which game would you like to play? (Use arrow keys and enter)");
 
         gameService.SetGameMode(gameSelection);
 
