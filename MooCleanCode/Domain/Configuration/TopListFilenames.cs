@@ -1,15 +1,17 @@
-using System.Net.Mime;
 using MooCleanCode.Domain.Enums;
 
 namespace MooCleanCode.Domain.Configuration;
 
 public static class TopListFilenames
 {
-    static private readonly string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "highScores");
     private const string defaultFilename = "mooResults.txt";
-    static private readonly Dictionary<GameType, string> Filenames = new ()
+
+    static private readonly string folderPath =
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "highScores");
+
+    static private readonly Dictionary<GameType, string> Filenames = new Dictionary<GameType, string>
     {
-        { GameType.Default , defaultFilename },
+        { GameType.Default, defaultFilename },
         { GameType.MooGame, defaultFilename },
         { GameType.MasterMindGame, "masterMindGameResults.txt" }
     };

@@ -1,4 +1,3 @@
-using MooCleanCode.Domain.Enums;
 using MooCleanCode.Domain.Interfaces;
 using MooCleanCode.Presentation.Interfaces;
 
@@ -30,9 +29,7 @@ public class ConsoleUI : IUI
         PutString("Enter your username: \n");
         string username = default;
         while (string.IsNullOrEmpty(username))
-        {
             username = GetString();
-        }
         return username;
     }
 
@@ -44,10 +41,10 @@ public class ConsoleUI : IUI
             Console.Clear();
             DisplayMenuSelection<T>(meny.ToArray(), selectorIndex, header);
             var userInput = Console.ReadKey(true).Key;
-            
+
             selectorIndex = userInput switch
             {
-                ConsoleKey.UpArrow   => (selectorIndex - 1 + meny.Count) % meny.Count,
+                ConsoleKey.UpArrow => (selectorIndex - 1 + meny.Count) % meny.Count,
                 ConsoleKey.DownArrow => (selectorIndex + 1 + meny.Count) % meny.Count,
                 _ => selectorIndex
             };
@@ -62,7 +59,7 @@ public class ConsoleUI : IUI
         PutString(header);
         for (int i = 0; i < meny.Length; i++)
         {
-            string selector = (i == selectorIndex) ? "->" : "  ";
+            string selector = i == selectorIndex ? "->" : "  ";
             PutString($"{selector} {(T)meny.GetValue(i)}");
         }
     }

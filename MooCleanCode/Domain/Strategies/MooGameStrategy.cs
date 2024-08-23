@@ -8,9 +8,9 @@ public class MooGameStrategy : IGameStrategy
 
     public string MakeGoal()
     {
-        Random randomGenerator = new();
-        HashSet<int> uniqueDigits = new();
-        StringBuilder uniqueGoal = new();
+        Random randomGenerator = new Random();
+        HashSet<int> uniqueDigits = new HashSet<int>();
+        StringBuilder uniqueGoal = new StringBuilder();
 
         while (uniqueDigits.Count < 4)
         {

@@ -1,4 +1,3 @@
-using MooCleanCode.Domain.Configuration;
 using MooCleanCode.Domain.Entities;
 using MooCleanCode.Domain.Enums;
 using MooCleanCode.Domain.Strategies;
@@ -16,7 +15,7 @@ public class GameTests
         game = new Game();
         game.SetGameStrategy(new MooGameStrategy());
     }
-    
+
     [TestMethod]
     public void GameIsInitiatedTest()
     {
@@ -32,11 +31,11 @@ public class GameTests
         string goal = "1221";
         string uniqueGuess = "1243";
         string guess = "1212";
-        
+
         string excpectedResult = "BB,CC";
         string uniqueResult = Game.EvaluateGuessForBullsAndCows(uniqueGoal, uniqueGuess);
         string result = Game.EvaluateGuessForBullsAndCows(goal, guess);
-        
+
         Assert.AreEqual(excpectedResult, uniqueResult);
         Assert.AreEqual(excpectedResult, result);
     }
@@ -52,28 +51,28 @@ public class GameTests
         string excpectedResult = "BBBB,";
         string uniqueResult = Game.EvaluateGuessForBullsAndCows(uniqueGoal, uniqueGuess);
         string result = Game.EvaluateGuessForBullsAndCows(goal, guess);
-        
+
         Assert.AreEqual(excpectedResult, uniqueResult);
         Assert.AreEqual(excpectedResult, result);
     }
-    
+
     [TestMethod]
     public void IncrementNumberOfGuessesWithParameterTest()
     {
         const int increment = 2;
-        
+
         Assert.AreEqual(game.NumberOfGuesses, Game.StartingGuesses);
-        
+
         game.SetNumberOfGuesses(increment);
         Assert.AreEqual(game.NumberOfGuesses, Game.StartingGuesses + increment);
     }
-    
+
     [TestMethod]
     public void SetGameStrategyTest()
     {
         var mooGameStrategy = game.SetGameStrategy(new MooGameStrategy());
         var masterMindGameStrategy = game.SetGameStrategy(new MasterMindGameStrategy());
-        
+
         Assert.AreEqual(mooGameStrategy.GetType(), typeof(MooGameStrategy));
         Assert.AreEqual(masterMindGameStrategy.GetType(), typeof(MasterMindGameStrategy));
     }
@@ -81,11 +80,11 @@ public class GameTests
     public void MooGameMakeGoalAndValidateNumbersUniqueTest()
     {
         game.SetGameStrategy(new MooGameStrategy());
-    
-        var goal = game.Goal;
+
+        string goal = game.Goal;
         HashSet<int> mooGoal = [];
-    
-        foreach (var letter in goal)
+
+        foreach (char letter in goal)
         {
             Assert.IsTrue(int.TryParse(letter.ToString(), out int number));
             Assert.IsTrue(mooGoal.Add(letter));
@@ -95,10 +94,10 @@ public class GameTests
     public void MasterMindMakeGoalAndValidateNumbersInRangeTest()
     {
         game = new Game(GameType.MasterMindGame);
-    
-        var goal = game.Goal;
-    
-        foreach (var letter in goal)
+
+        string goal = game.Goal;
+
+        foreach (char letter in goal)
         {
             Assert.IsTrue(int.TryParse(letter.ToString(), out int number));
             Assert.IsTrue(number is >= 0 and <= 5);

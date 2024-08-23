@@ -6,15 +6,15 @@ namespace MooCleanCode.Domain.Configuration;
 
 public static class GameStrategies
 {
-    
-    static private readonly Dictionary<GameType, IGameStrategy> gameStrategies = new ()
+
+    static private readonly Dictionary<GameType, IGameStrategy> gameStrategies = new Dictionary<GameType, IGameStrategy>
     {
         { GameType.Default, new MooGameStrategy() },
         { GameType.MooGame, new MooGameStrategy() },
         { GameType.MasterMindGame, new MasterMindGameStrategy() }
     };
 
-    static private readonly Dictionary<GameType, string> gameRules = new ()
+    static private readonly Dictionary<GameType, string> gameRules = new Dictionary<GameType, string>
     {
         { GameType.Default, "4 unique numbers between 0-10." },
         { GameType.MooGame, "4 unique numbers between 0-10" },

@@ -10,14 +10,14 @@ public class GameManager(GameService gameService, IUI ui) : IGameManager
 {
     public void Run()
     {
-        GameType gameSelection = ui.MenuSelector(
+        var gameSelection = ui.MenuSelector(
             Enum.GetValues(typeof(GameType)).Cast<GameType>().ToList(),
             "Which game would you like to play?");
-        
+
         gameService.SetGameMode(gameSelection);
-        
+
         string name = ui.GetUsername();
-        
+
         do
         {
             NewGame();
@@ -34,7 +34,7 @@ public class GameManager(GameService gameService, IUI ui) : IGameManager
             userGuess = ui.GetString();
             ui.PutString(gameService.HandleGuess(userGuess));
         }
-        
+
         gameService.AddGameToToplist(name);
         ui.ShowToplist(gameService.GetToplist());
         ui.PutString($"\nGood job {name} this round took {gameService.GetNumberOfGuesses()} guesses. \n" +
@@ -53,7 +53,6 @@ public class GameManager(GameService gameService, IUI ui) : IGameManager
 
     private bool PlayOn()
     {
-        
         string answer = ui.MenuSelector<string>(["Yes", "No"], "Play again?");
 
         return string.IsNullOrEmpty(answer) || answer[..1].ToLower() != "n";

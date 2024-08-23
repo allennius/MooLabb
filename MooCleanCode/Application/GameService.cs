@@ -28,7 +28,7 @@ public class GameService(Game game, IGameRepository repository)
     }
     public void AddGameToToplist(string name)
     {
-        if(game.NumberOfGuesses > 0)
+        if (game.NumberOfGuesses > 0)
             repository.WriteToToplist(name, game.NumberOfGuesses);
     }
     public IEnumerable<IPlayer> GetToplist()
@@ -46,11 +46,11 @@ public class GameService(Game game, IGameRepository repository)
         var gameType = Enum.IsDefined(typeof(GameType), gameSelection)
             ? gameSelection
             : GameType.Default;
-        
+
         repository.SetToplistFilename(TopListFilenames.GetFileName(gameType));
         game.SetGameStrategy(GameStrategies.GetGameStrategy(gameType));
     }
-    
+
     static private List<IPlayer> SummarizeToplistDataToPlayerTotals(IEnumerable<(string name, int score)> toplistData)
     {
         var summarizedToplist = new List<IPlayer>();

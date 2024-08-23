@@ -8,9 +8,9 @@ public class MasterMindGameStrategy : IGameStrategy
 
     public string MakeGoal()
     {
-        Random randomGenerator = new();
-        StringBuilder goal = new();
-        
+        Random randomGenerator = new Random();
+        StringBuilder goal = new StringBuilder();
+
         while (goal.Length < 4)
         {
             int randomDigit = randomGenerator.Next(6);

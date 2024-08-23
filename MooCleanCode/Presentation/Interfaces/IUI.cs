@@ -1,4 +1,3 @@
-using MooCleanCode.Domain.Enums;
 using MooCleanCode.Domain.Interfaces;
 
 namespace MooCleanCode.Presentation.Interfaces;

@@ -1,4 +1,3 @@
-using System.Text;
 using MooCleanCode.Domain.Configuration;
 using MooCleanCode.Domain.Enums;
 using MooCleanCode.Domain.Interfaces;
@@ -11,18 +10,19 @@ public class Game
     public const int StartingGuesses = 0;
     public static readonly string EmptyGuess = new string(' ', 4);
 
+    private IGameStrategy gameStrategy;
+
     public string Goal { get; private set; } = EmptyGuess;
     public int NumberOfGuesses { get; private set; }
-
-    private IGameStrategy gameStrategy;
 
     public Game(GameType gameType = GameType.Default)
     {
         gameStrategy = SetGameStrategy(GameStrategies.GetGameStrategy(gameType));
         Goal = gameStrategy.MakeGoal();
     }
+    
     public void SetGoal()
-    {   
+    {
         string goal = gameStrategy.MakeGoal();
         if (int.TryParse(goal, out int _) && goal.Length == 4)
             Goal = goal;
@@ -43,8 +43,8 @@ public class Game
     {
         int cows = 0, bulls = 0;
 
-        Dictionary<char, int> goalCount = new();
-        Dictionary<char, int> guessCount = new();
+        Dictionary<char, int> goalCount = new Dictionary<char, int>();
+        Dictionary<char, int> guessCount = new Dictionary<char, int>();
         userGuess += EmptyGuess; // if player entered less than 4 chars
 
         for (int i = 0; i < 4; i++)

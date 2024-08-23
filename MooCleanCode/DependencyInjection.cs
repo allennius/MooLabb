@@ -9,7 +9,6 @@ using MooCleanCode.Presentation.UI;
 
 namespace MooCleanCode;
 
-
 public static class DependencyInjection
 {
     public static void AddGameServices(this IServiceCollection services)

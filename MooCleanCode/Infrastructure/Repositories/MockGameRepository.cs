@@ -5,14 +5,14 @@ namespace MooCleanCode.Infrastructure.Repositories;
 public class MockGameRepository : IGameRepository
 {
 
-    public string toplistFilename = "";
-    
-    private List<(string name, int score)> toplist = new List<(string name, int score)>
+    private readonly List<(string name, int score)> toplist = new List<(string name, int score)>
     {
         ("Obi", 10),
         ("Anakin", 5),
         ("Yoda", 1)
     };
+
+    public string toplistFilename = "";
 
     public IEnumerable<(string name, int score)> GetToplistData()
     {

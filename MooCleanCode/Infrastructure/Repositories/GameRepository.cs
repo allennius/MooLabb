@@ -4,8 +4,8 @@ namespace MooCleanCode.Infrastructure.Repositories;
 
 public class GameRepository : IGameRepository
 {
-    private string toplistFilename;
     private readonly string lineSplit = "#&#";
+    private string toplistFilename;
 
     public void SetToplistFilename(string filename)
     {
@@ -30,6 +30,4 @@ public class GameRepository : IGameRepository
         }
         return results;
     }
-
-    
 }

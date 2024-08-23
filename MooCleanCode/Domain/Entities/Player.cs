@@ -4,9 +4,9 @@ namespace MooCleanCode.Domain.Entities;
 
 public class Player(string name, int totalGuesses) : IPlayer
 {
+    private int totalGuesses = totalGuesses;
     public string Name { get; } = name;
     public int GamesPlayed { get; private set; } = 1;
-    private int totalGuesses = totalGuesses;
 
 
     public void UpdatePlayerStats(int guesses)
