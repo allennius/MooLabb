@@ -1,5 +1,6 @@
 using MooCleanCode.Domain.Entities;
 using MooCleanCode.Domain.Enums;
+using MooCleanCode.Domain.Interfaces;
 using MooCleanCode.Domain.Strategies;
 
 namespace MooCleanCode.Tests;
@@ -7,7 +8,7 @@ namespace MooCleanCode.Tests;
 [TestClass]
 public class GameTests
 {
-    private Game game;
+    private IGame game;
 
     [TestInitialize]
     public void InitializeTest()
@@ -33,8 +34,8 @@ public class GameTests
         string guess = "1212";
 
         string excpectedResult = "BB,CC";
-        string uniqueResult = Game.EvaluateGuessForBullsAndCows(uniqueGoal, uniqueGuess);
-        string result = Game.EvaluateGuessForBullsAndCows(goal, guess);
+        string uniqueResult = game.EvaluateGuessForBullsAndCows(uniqueGoal, uniqueGuess);
+        string result = game.EvaluateGuessForBullsAndCows(goal, guess);
 
         Assert.AreEqual(excpectedResult, uniqueResult);
         Assert.AreEqual(excpectedResult, result);
@@ -49,8 +50,8 @@ public class GameTests
         string guess = "1111";
 
         string excpectedResult = "BBBB,";
-        string uniqueResult = Game.EvaluateGuessForBullsAndCows(uniqueGoal, uniqueGuess);
-        string result = Game.EvaluateGuessForBullsAndCows(goal, guess);
+        string uniqueResult = game.EvaluateGuessForBullsAndCows(uniqueGoal, uniqueGuess);
+        string result = game.EvaluateGuessForBullsAndCows(goal, guess);
 
         Assert.AreEqual(excpectedResult, uniqueResult);
         Assert.AreEqual(excpectedResult, result);

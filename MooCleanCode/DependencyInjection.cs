@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MooCleanCode.Application;
 using MooCleanCode.Application.Interfaces;
 using MooCleanCode.Domain.Entities;
+using MooCleanCode.Domain.Interfaces;
 using MooCleanCode.Infrastructure.Repositories;
 using MooCleanCode.Presentation;
 using MooCleanCode.Presentation.Interfaces;
@@ -15,8 +16,8 @@ public static class DependencyInjection
     {
         services.AddSingleton<IUI, ConsoleUI>();
         services.AddSingleton<IGameRepository, GameRepository>();
-        services.AddSingleton<Game>();
-        services.AddSingleton<GameService>();
+        services.AddSingleton<IGame, Game>();
+        services.AddSingleton<IGameService, GameService>();
         services.AddSingleton<IGameManager, GameManager>();
     }
 }

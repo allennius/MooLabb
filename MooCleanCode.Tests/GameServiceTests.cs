@@ -1,4 +1,5 @@
 using MooCleanCode.Application;
+using MooCleanCode.Application.Interfaces;
 using MooCleanCode.Domain.Entities;
 using MooCleanCode.Domain.Enums;
 using MooCleanCode.Infrastructure.Repositories;
@@ -8,7 +9,7 @@ namespace MooCleanCode.Tests;
 [TestClass]
 public class MooGameServiceTests
 {
-    private GameService gameservice;
+    private IGameService gameservice;
 
     [TestInitialize]
     public void InitializeTest()

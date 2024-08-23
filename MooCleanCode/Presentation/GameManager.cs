@@ -1,4 +1,4 @@
-using MooCleanCode.Application;
+using MooCleanCode.Application.Interfaces;
 using MooCleanCode.Domain.Configuration;
 using MooCleanCode.Domain.Entities;
 using MooCleanCode.Domain.Enums;
@@ -6,7 +6,7 @@ using MooCleanCode.Presentation.Interfaces;
 
 namespace MooCleanCode.Presentation;
 
-public class GameManager(GameService gameService, IUI ui) : IGameManager
+public class GameManager(IGameService gameService, IUI ui) : IGameManager
 {
     public void Run()
     {

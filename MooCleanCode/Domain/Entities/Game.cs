@@ -4,7 +4,7 @@ using MooCleanCode.Domain.Interfaces;
 
 namespace MooCleanCode.Domain.Entities;
 
-public class Game
+public class Game : IGame
 {
     public const string CorrectBulls = "BBBB,";
     public const int StartingGuesses = 0;
@@ -12,15 +12,15 @@ public class Game
 
     private IGameStrategy gameStrategy;
 
-    public string Goal { get; private set; } = EmptyGuess;
-    public int NumberOfGuesses { get; private set; }
-
     public Game(GameType gameType = GameType.Default)
     {
         gameStrategy = SetGameStrategy(GameStrategies.GetGameStrategy(gameType));
         Goal = gameStrategy.MakeGoal();
     }
-    
+
+    public string Goal { get; private set; } = EmptyGuess;
+    public int NumberOfGuesses { get; private set; }
+
     public void SetGoal()
     {
         string goal = gameStrategy.MakeGoal();
@@ -39,12 +39,12 @@ public class Game
         return gameStrategy;
     }
 
-    public static string EvaluateGuessForBullsAndCows(string goal, string userGuess)
+    public string EvaluateGuessForBullsAndCows(string goal, string userGuess)
     {
         int cows = 0, bulls = 0;
 
-        Dictionary<char, int> goalCount = new Dictionary<char, int>();
-        Dictionary<char, int> guessCount = new Dictionary<char, int>();
+        var goalCount = new Dictionary<char, int>();
+        var guessCount = new Dictionary<char, int>();
         userGuess += EmptyGuess; // if player entered less than 4 chars
 
         for (int i = 0; i < 4; i++)

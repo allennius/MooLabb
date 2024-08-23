@@ -6,12 +6,12 @@ using MooCleanCode.Domain.Interfaces;
 
 namespace MooCleanCode.Application;
 
-public class GameService(Game game, IGameRepository repository)
+public class GameService(IGame game, IGameRepository repository) : IGameService
 {
     public string HandleGuess(string guess)
     {
         game.SetNumberOfGuesses(game.NumberOfGuesses + 1);
-        return Game.EvaluateGuessForBullsAndCows(game.Goal, guess);
+        return game.EvaluateGuessForBullsAndCows(game.Goal, guess);
     }
     public string GetGoal()
     {

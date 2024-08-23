@@ -8,8 +8,8 @@ public class MasterMindGameStrategy : IGameStrategy
 
     public string MakeGoal()
     {
-        Random randomGenerator = new Random();
-        StringBuilder goal = new StringBuilder();
+        var randomGenerator = new Random();
+        var goal = new StringBuilder();
 
         while (goal.Length < 4)
         {
