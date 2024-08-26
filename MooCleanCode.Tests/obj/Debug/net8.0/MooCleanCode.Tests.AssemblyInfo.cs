@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MooCleanCode.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e9fa06a56f6c6cf5871436d80df0172d9008e7a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70615530cc6a8310237e079e22cea893033a9eae")]
 [assembly: System.Reflection.AssemblyProductAttribute("MooCleanCode.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MooCleanCode.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
