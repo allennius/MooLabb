@@ -1,16 +1,18 @@
 using MooCleanCode.Application.Interfaces;
+using MooCleanCode.Domain.Configuration;
+using MooCleanCode.Domain.Enums;
 
 namespace MooCleanCode.Infrastructure.Repositories;
 
 public class MockGameRepository : IGameRepository
 {
 
-    private readonly List<(string name, int score)> toplist = new List<(string name, int score)>
-    {
+    private readonly List<(string name, int score)> toplist =
+    [
         ("Obi", 10),
         ("Anakin", 5),
         ("Yoda", 1)
-    };
+    ];
 
     public string toplistFilename = "";
 
@@ -22,8 +24,9 @@ public class MockGameRepository : IGameRepository
     {
         toplist.Add((name, numberOfGuesses));
     }
-    public void SetToplistFilename(string filename)
+    public void SetToplistSource(GameType gameType)
     {
+        string filename = TopListSourceNames.GetFileName(gameType);
         toplistFilename = filename;
     }
 }

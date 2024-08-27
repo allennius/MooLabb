@@ -23,7 +23,7 @@ public class MooGameServiceTests
     public void GameServiceIsInitializedTest()
     {
         Assert.IsNotNull(gameservice);
-        Assert.IsTrue(gameservice.GetGoal().Length == 4);
+        Assert.IsTrue(gameservice.GetSecretCode().Length == 4);
         Assert.IsTrue(gameservice.GetNumberOfGuesses() == 0);
     }
 
@@ -38,9 +38,9 @@ public class MooGameServiceTests
     }
 
     [TestMethod]
-    public void CheckMakeGoalAndResetNumberOfGuessesNewGameTest()
+    public void CheckCreateSecretCodeAndResetNumberOfGuessesNewGameTest()
     {
-        string goal = gameservice.GetGoal();
+        string code = gameservice.GetSecretCode();
 
         // increment guesses
         gameservice.HandleGuess("1111");
@@ -48,11 +48,11 @@ public class MooGameServiceTests
 
         gameservice.ResetGame();
 
-        Assert.IsTrue(goal.Length == 4);
-        Assert.IsTrue(goal is string);
+        Assert.IsTrue(code.Length == 4);
+        Assert.IsTrue(code is string);
         Assert.IsTrue(numberOfGuesses > 0);
         Assert.IsTrue(gameservice.GetNumberOfGuesses() == 0);
-        Assert.AreNotEqual(goal, gameservice.GetGoal());
+        Assert.AreNotEqual(code, gameservice.GetSecretCode());
     }
 
     [TestMethod]

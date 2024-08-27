@@ -1,4 +1,6 @@
 using MooCleanCode.Application.Interfaces;
+using MooCleanCode.Domain.Configuration;
+using MooCleanCode.Domain.Enums;
 
 namespace MooCleanCode.Infrastructure.Repositories;
 
@@ -7,9 +9,10 @@ public class GameRepository : IGameRepository
     private readonly string lineSplit = "#&#";
     private string toplistFilename;
 
-    public void SetToplistFilename(string filename)
+    public void SetToplistSource(GameType gameType)
     {
-        toplistFilename = filename;
+        string filename = TopListSourceNames.GetFileName(gameType);
+        toplistFilename = filename + ".txt";
     }
     public void WriteToToplist(string name, int numberOfGuesses)
     {

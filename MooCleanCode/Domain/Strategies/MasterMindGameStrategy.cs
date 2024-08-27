@@ -1,22 +1,23 @@
 using System.Text;
+using MooCleanCode.Domain.Entities;
 using MooCleanCode.Domain.Interfaces;
 
 namespace MooCleanCode.Domain.Strategies;
 
 public class MasterMindGameStrategy : IGameStrategy
 {
-
-    public string MakeGoal()
+    private readonly int largestDigitForSecret = 5;
+    public string CreateSecretCode()
     {
         var randomGenerator = new Random();
-        var goal = new StringBuilder();
+        var code = new StringBuilder();
 
-        while (goal.Length < 4)
+        while (code.Length < Game.SecretCodeLength)
         {
-            int randomDigit = randomGenerator.Next(6);
-            goal.Append(randomDigit);
+            int randomDigit = randomGenerator.Next(largestDigitForSecret + 1);
+            code.Append(randomDigit);
         }
 
-        return goal.ToString();
+        return code.ToString();
     }
 }

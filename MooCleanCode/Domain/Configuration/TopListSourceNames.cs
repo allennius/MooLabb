@@ -2,9 +2,9 @@ using MooCleanCode.Domain.Enums;
 
 namespace MooCleanCode.Domain.Configuration;
 
-public static class TopListFilenames
+public static class TopListSourceNames
 {
-    private const string defaultFilename = "mooResults.txt";
+    private const string defaultFilename = "mooResults";
 
     static private readonly string folderPath =
         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "highScores");
@@ -13,7 +13,7 @@ public static class TopListFilenames
     {
         { GameType.Default, defaultFilename },
         { GameType.MooGame, defaultFilename },
-        { GameType.MasterMindGame, "masterMindGameResults.txt" }
+        { GameType.MasterMindGame, "masterMindGameResults" }
     };
 
     public static string GetFileName(GameType gameType)
@@ -21,5 +21,10 @@ public static class TopListFilenames
         string filename = Filenames.GetValueOrDefault(gameType, defaultFilename);
         Directory.CreateDirectory(folderPath);
         return Path.Combine(folderPath, filename);
+    }
+    public static string GetCollectionName(GameType gameType)
+    {
+        string filename = Filenames.GetValueOrDefault(gameType, defaultFilename);
+        return filename;
     }
 }

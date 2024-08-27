@@ -8,24 +8,25 @@ public class Game : IGame
 {
     public const string CorrectBulls = "BBBB,";
     public const int StartingGuesses = 0;
-    public static readonly string EmptyGuess = new string(' ', 4);
+    public const int SecretCodeLength = 4;
+    public static readonly string EmptyGuess = new string(' ', SecretCodeLength);
 
     private IGameStrategy gameStrategy;
 
     public Game(GameType gameType = GameType.Default)
     {
         gameStrategy = SetGameStrategy(GameStrategies.GetGameStrategy(gameType));
-        Goal = gameStrategy.MakeGoal();
+        SecretCode = gameStrategy.CreateSecretCode();
     }
 
-    public string Goal { get; private set; } = EmptyGuess;
+    public string SecretCode { get; private set; } = EmptyGuess;
     public int NumberOfGuesses { get; private set; }
 
-    public void SetGoal()
+    public void SetSecretCode()
     {
-        string goal = gameStrategy.MakeGoal();
-        if (int.TryParse(goal, out int _) && goal.Length == 4)
-            Goal = goal;
+        string code = gameStrategy.CreateSecretCode();
+        if (int.TryParse(code, out int _) && code.Length == SecretCodeLength)
+            SecretCode = code;
     }
     public void SetNumberOfGuesses(int numberOfGuesses = 0)
     {
@@ -39,26 +40,26 @@ public class Game : IGame
         return gameStrategy;
     }
 
-    public string EvaluateGuessForBullsAndCows(string goal, string userGuess)
+    public string EvaluateGuessForBullsAndCows(string code, string userGuess)
     {
         int cows = 0, bulls = 0;
 
-        var goalCount = new Dictionary<char, int>();
+        var codeCount = new Dictionary<char, int>();
         var guessCount = new Dictionary<char, int>();
         userGuess += EmptyGuess; // if player entered less than 4 chars
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < SecretCodeLength; i++)
         {
-            if (goal[i] == userGuess[i])
+            if (code[i] == userGuess[i])
             {
                 bulls++;
                 continue;
             }
 
-            if (goalCount.ContainsKey(goal[i]))
-                goalCount[goal[i]]++;
+            if (codeCount.ContainsKey(code[i]))
+                codeCount[code[i]]++;
             else
-                goalCount[goal[i]] = 1;
+                codeCount[code[i]] = 1;
 
             if (guessCount.ContainsKey(userGuess[i]))
                 guessCount[userGuess[i]]++;
@@ -68,7 +69,7 @@ public class Game : IGame
 
         foreach (var entry in guessCount)
         {
-            if (goalCount.TryGetValue(entry.Key, out int value))
+            if (codeCount.TryGetValue(entry.Key, out int value))
                 cows += Math.Min(entry.Value, value);
         }
 

@@ -6,7 +6,7 @@ namespace MooCleanCode.Application.Interfaces;
 public interface IGameService
 {
     public string HandleGuess(string guess);
-    public string GetGoal();
+    public string GetSecretCode();
     public int GetNumberOfGuesses();
     public void ResetGame();
     public void AddGameToToplist(string name);

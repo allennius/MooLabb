@@ -29,11 +29,13 @@ public class GameManager(IGameService gameService, IUI ui) : IGameManager
     private void PlayGame(string name)
     {
         string userGuess = Game.EmptyGuess;
-        while (gameService.HandleGuess(userGuess) != Game.CorrectBulls)
+        string cowsAndBulls = Game.EmptyGuess;
+        do
         {
             userGuess = ui.GetString();
-            ui.PutString(gameService.HandleGuess(userGuess));
-        }
+            cowsAndBulls = gameService.HandleGuess(userGuess);
+            ui.PutString(cowsAndBulls);
+        } while (cowsAndBulls != Game.CorrectBulls);
 
         gameService.AddGameToToplist(name);
         ui.ShowToplist(gameService.GetToplist());
@@ -48,7 +50,7 @@ public class GameManager(IGameService gameService, IUI ui) : IGameManager
         ui.PutString("New Game: \n");
 
         //comment out or remove next line to play real games!
-        ui.PutString("For practice, Number is: " + gameService.GetGoal() + "\n");
+        ui.PutString("For practice, Number is: " + gameService.GetSecretCode() + "\n");
     }
 
     private bool PlayOn()

@@ -1,24 +1,25 @@
 using System.Text;
+using MooCleanCode.Domain.Entities;
 using MooCleanCode.Domain.Interfaces;
 
 namespace MooCleanCode.Domain.Strategies;
 
 public class MooGameStrategy : IGameStrategy
 {
-
-    public string MakeGoal()
+    private readonly int largestDigitForSecret = 9;
+    public string CreateSecretCode()
     {
         var randomGenerator = new Random();
         var uniqueDigits = new HashSet<int>();
-        var uniqueGoal = new StringBuilder();
+        var uniqueCode = new StringBuilder();
 
-        while (uniqueDigits.Count < 4)
+        while (uniqueDigits.Count < Game.SecretCodeLength)
         {
-            int randomDigit = randomGenerator.Next(10);
+            int randomDigit = randomGenerator.Next(largestDigitForSecret + 1);
             if (uniqueDigits.Add(randomDigit))
-                uniqueGoal.Append(randomDigit);
+                uniqueCode.Append(randomDigit);
         }
 
-        return uniqueGoal.ToString();
+        return uniqueCode.ToString();
     }
 }

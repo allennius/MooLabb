@@ -11,11 +11,11 @@ public class GameService(IGame game, IGameRepository repository) : IGameService
     public string HandleGuess(string guess)
     {
         game.SetNumberOfGuesses(game.NumberOfGuesses + 1);
-        return game.EvaluateGuessForBullsAndCows(game.Goal, guess);
+        return game.EvaluateGuessForBullsAndCows(game.SecretCode, guess);
     }
-    public string GetGoal()
+    public string GetSecretCode()
     {
-        return game.Goal;
+        return game.SecretCode;
     }
     public int GetNumberOfGuesses()
     {
@@ -23,7 +23,7 @@ public class GameService(IGame game, IGameRepository repository) : IGameService
     }
     public void ResetGame()
     {
-        game.SetGoal();
+        game.SetSecretCode();
         game.SetNumberOfGuesses();
     }
     public void AddGameToToplist(string name)
@@ -47,7 +47,7 @@ public class GameService(IGame game, IGameRepository repository) : IGameService
             ? gameSelection
             : GameType.Default;
 
-        repository.SetToplistFilename(TopListFilenames.GetFileName(gameType));
+        repository.SetToplistSource(gameSelection);
         game.SetGameStrategy(GameStrategies.GetGameStrategy(gameType));
     }
 

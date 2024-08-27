@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MooCleanCode", "MooCleanCode\MooCleanCode.csproj", "{29413F29-BBA4-426F-B669-3A68B4D881DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MooCleanCode.Tests", "MooCleanCode.Tests\MooCleanCode.Tests.csproj", "{ACDCDF9A-01B1-415A-8263-E85242EDDEB4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{834DD36B-4FD3-452E-8F6A-0287BB5EE8CF}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29413F29-BBA4-426F-B669-3A68B4D881DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29413F29-BBA4-426F-B669-3A68B4D881DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29413F29-BBA4-426F-B669-3A68B4D881DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29413F29-BBA4-426F-B669-3A68B4D881DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACDCDF9A-01B1-415A-8263-E85242EDDEB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACDCDF9A-01B1-415A-8263-E85242EDDEB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACDCDF9A-01B1-415A-8263-E85242EDDEB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACDCDF9A-01B1-415A-8263-E85242EDDEB4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

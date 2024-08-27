@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\MooCleanCode\MooCleanCode.csproj" />
+        <ProjectReference Include="..\MooCleanCode\MooCleanCode.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -28,14 +28,14 @@ public class GameTests
     [TestMethod]
     public void CheckGuessIncorrectGuessTest()
     {
-        string uniqueGoal = "1234";
-        string goal = "1221";
+        string uniqueCode = "1234";
+        string code = "1221";
         string uniqueGuess = "1243";
         string guess = "1212";
 
         string excpectedResult = "BB,CC";
-        string uniqueResult = game.EvaluateGuessForBullsAndCows(uniqueGoal, uniqueGuess);
-        string result = game.EvaluateGuessForBullsAndCows(goal, guess);
+        string uniqueResult = game.EvaluateGuessForBullsAndCows(uniqueCode, uniqueGuess);
+        string result = game.EvaluateGuessForBullsAndCows(code, guess);
 
         Assert.AreEqual(excpectedResult, uniqueResult);
         Assert.AreEqual(excpectedResult, result);
@@ -44,14 +44,14 @@ public class GameTests
     [TestMethod]
     public void CheckGuessCorrectGuessTest()
     {
-        string uniqueGoal = "1234";
-        string goal = "1111";
+        string uniqueCode = "1234";
+        string code = "1111";
         string uniqueGuess = "1234";
         string guess = "1111";
 
         string excpectedResult = "BBBB,";
-        string uniqueResult = game.EvaluateGuessForBullsAndCows(uniqueGoal, uniqueGuess);
-        string result = game.EvaluateGuessForBullsAndCows(goal, guess);
+        string uniqueResult = game.EvaluateGuessForBullsAndCows(uniqueCode, uniqueGuess);
+        string result = game.EvaluateGuessForBullsAndCows(code, guess);
 
         Assert.AreEqual(excpectedResult, uniqueResult);
         Assert.AreEqual(excpectedResult, result);
@@ -78,27 +78,27 @@ public class GameTests
         Assert.AreEqual(masterMindGameStrategy.GetType(), typeof(MasterMindGameStrategy));
     }
     [TestMethod]
-    public void MooGameMakeGoalAndValidateNumbersUniqueTest()
+    public void MooGameCreateSecretCodeAndValidateNumbersUniqueTest()
     {
         game.SetGameStrategy(new MooGameStrategy());
 
-        string goal = game.Goal;
-        HashSet<int> mooGoal = [];
+        string code = game.SecretCode;
+        HashSet<int> mooCode = [];
 
-        foreach (char letter in goal)
+        foreach (char letter in code)
         {
             Assert.IsTrue(int.TryParse(letter.ToString(), out int number));
-            Assert.IsTrue(mooGoal.Add(letter));
+            Assert.IsTrue(mooCode.Add(letter));
         }
     }
     [TestMethod]
-    public void MasterMindMakeGoalAndValidateNumbersInRangeTest()
+    public void MasterMindCreateSecretCodeAndValidateNumbersInRangeTest()
     {
         game = new Game(GameType.MasterMindGame);
 
-        string goal = game.Goal;
+        string code = game.SecretCode;
 
-        foreach (char letter in goal)
+        foreach (char letter in code)
         {
             Assert.IsTrue(int.TryParse(letter.ToString(), out int number));
             Assert.IsTrue(number is >= 0 and <= 5);
