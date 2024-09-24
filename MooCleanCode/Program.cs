@@ -9,7 +9,12 @@ var configuration = new ConfigurationBuilder()
     .Build();
 
 var services = new ServiceCollection();
-services.AddDataSource(configuration);
+
+// choose between mongo and file database by uncomment/comment out one of following lines
+// services.AddMongoDBSource(configuration);
+services.AddFileDatabase();
+
+
 services.AddGameServices();
 
 var serviceProvider = services.BuildServiceProvider();

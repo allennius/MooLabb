@@ -16,9 +16,8 @@ namespace MooCleanCode;
 public static class DependencyInjection
 {
 
-    public static void AddDataSource(this IServiceCollection services, IConfiguration configuration)
+    public static void AddMongoDBSource(this IServiceCollection services, IConfiguration configuration)
     {
-        // mongoDatabase
         services.AddSingleton<IGameRepository, MongoDBGameRepository>(sp =>
         {
             string? connectionString = configuration.GetConnectionString("MongoDB");
@@ -27,9 +26,12 @@ public static class DependencyInjection
                 .GetDatabase(mongoUrl.DatabaseName);
             return new MongoDBGameRepository(database, GameType.Default);
         });
+        
+    }
 
-        // fileDatabase
-        // services.AddSingleton<IGameRepository, GameRepository>();
+    public static void AddFileDatabase(this IServiceCollection services)
+    {
+        services.AddSingleton<IGameRepository, GameRepository>();
     }
     public static void AddGameServices(this IServiceCollection services)
     {

@@ -43,7 +43,7 @@ public class MooGameServiceTests
         string code = gameservice.GetSecretCode();
 
         // increment guesses
-        gameservice.HandleGuess("1111");
+        gameservice.HandleGuess("1111"); 
         int numberOfGuesses = gameservice.GetNumberOfGuesses();
 
         gameservice.ResetGame();
